@@ -1,21 +1,21 @@
 ---
 resources:
-  - name: fizzbuzzfeed-git
+  - name: github-repo
     type: git
     source:
-      uri: https://github.com/armakuni/fizzbuzzfeed
+      uri: git@github.com:armakuni/fizzbuzzfeed.git
       private_key: {{git-private-key}}
   - name: website
     type: git
     source:
       branch: gh-pages
-      uri: https://github.com/armakuni/fizzbuzzfeed
+      uri: git@github.com:armakuni/fizzbuzzfeed.git
       private_key: {{git-private-key}}
 jobs:
   - name: job
     public: true
     plan:
-      - get: fizzbuzzfeed-git
+      - get: github-repo
         trigger: true
       - task: simple-task
         config:
@@ -28,4 +28,4 @@ jobs:
             args: ["Hello, world!"]
       - put: website
         params: 
-          repository: fizzbuzzfeed-git
+          repository: github-repo
