@@ -1,3 +1,3 @@
-# Fizz Buzz Feed
+# Index Page
 
 [Article](article.md)
