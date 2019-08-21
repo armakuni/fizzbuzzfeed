@@ -5,7 +5,7 @@ resources:
     source:
       uri: git@github.com:armakuni/fizzbuzzfeed.git
       private_key: {{git-private-key}}
-  - name: website
+  - name: website-repo
     type: git
     source:
       branch: gh-pages
@@ -17,15 +17,32 @@ jobs:
     plan:
       - get: github-repo
         trigger: true
-      - task: simple-task
+      - get: website-repo
+      - task: copy-content
         config:
           platform: linux
           image_resource:
             type: registry-image
-            source: { repository: busybox }
+            source: { repository: ubuntu }
+          inputs:
+            - name: github-repo
+            - name: website-repo
+          outputs:
+            - name: updated-website
           run:
-            path: echo
-            args: ["Hello, world!"]
-      - put: website
+            path: sh
+            args: 
+              - -xc 
+              - |
+                apt-get update
+                apt-get install -y git
+                git config --global user.email "concourse@armakuni.com"
+                git config --global user.name "Concourse"
+                git clone website-repo updated-website
+                cp -a github-repo/docs/* updated-website
+                cd updated-website
+                git add .
+                git commit -m "Updating website"
+      - put: website-repo
         params: 
-          repository: github-repo
+          repository: updated-website
