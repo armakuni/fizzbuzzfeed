@@ -5,6 +5,12 @@ resources:
     source:
       uri: https://github.com/armakuni/fizzbuzzfeed
       private_key: {{git-private-key}}
+  - name: website
+    type: git
+    source:
+      branch: gh-pages
+      uri: https://github.com/armakuni/fizzbuzzfeed
+      private_key: {{git-private-key}}
 jobs:
   - name: job
     public: true
@@ -20,7 +26,6 @@ jobs:
           run:
             path: echo
             args: ["Hello, world!"]
-      - put: fizzbuzzfeed-git
-        branch: gh-pages
+      - put: website
         params: 
           repository: fizzbuzzfeed-git
