@@ -1,3 +1,4 @@
 # Fizz Buzz Feed
 
-[Article](article.md)
+A website for the workshop at Agile Scotland.
+

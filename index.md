@@ -1,3 +1,3 @@
-# Index Page
+# Agile Articles
 
-[Article](article.md)
+- [Article](article.md)
