@@ -21,5 +21,6 @@ jobs:
             path: echo
             args: ["Hello, world!"]
       - put: fizzbuzzfeed-git
+        branch: gh-pages
         params: 
-          branch: gh-pages
+          repository: fizzbuzzfeed-git
