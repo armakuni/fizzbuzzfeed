@@ -1,0 +1,25 @@
+---
+resources:
+  - name: fizzbuzzfeed-git
+    type: git
+    source:
+      uri: https://github.com/armakuni/fizzbuzzfeed
+      private_key: {{git-private-key}}
+jobs:
+  - name: job
+    public: true
+    plan:
+      - get: fizzbuzzfeed-git
+        trigger: true
+      - task: simple-task
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: busybox }
+          run:
+            path: echo
+            args: ["Hello, world!"]
+      - put: fizzbuzzfeed-git
+        params: 
+          branch: gh-pages
