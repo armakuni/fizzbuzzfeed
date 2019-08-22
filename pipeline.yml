@@ -21,12 +21,19 @@ jobs:
         trigger: true
       - task: check-spelling
         file: github-repo/ci/spell-check/task.yml
+  - name: word-count
+    plan:
+      - get: github-repo
+        trigger: false
+        passed: spell-check
+      - task: count-words
+        file: github-repo/ci/word-count/task.yml
   - name: deploy-website
     plan:
       - get: github-repo
         trigger: false
         passed:
-          - spell-check
+          - word-count
       - task: copy-content
         file: github-repo/ci/deploy-website/task.yml          
       - put: website

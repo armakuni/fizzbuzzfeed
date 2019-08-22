@@ -5,8 +5,6 @@ image_resource:
     repository: tmaier/markdown-spellcheck
 inputs:
   - name: github-repo
-outputs:
-  - name: generated-site
 run:
   dir: github-repo
   path: mdspell
