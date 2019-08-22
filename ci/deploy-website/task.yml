@@ -2,7 +2,9 @@ platform: linux
 
 image_resource:
   type: registry-image
-  source: { repository: jekyll/jekyll, tag: 3.7.3 }
+  source:
+    repository: jekyll/jekyll
+    tag: 3.7.3
 
 inputs:
   - name: github-repo

@@ -15,11 +15,36 @@ resources:
       space: {{cf-space}}
       skip_cert_check: false
 jobs:
+  - name: spell-check
+    plan:
+      - get: github-repo
+        trigger: true
+      - task: check-spelling
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: tmaier/markdown-spellcheck
+          inputs:
+            - name: github-repo
+          outputs:
+            - name: generated-site
+          run:
+            dir: github-repo
+            path: mdspell
+            args:
+              - --en-gb
+              - --ignore-numbers
+              - --report
+              - '**/*.md'
+
   - name: deploy-website
-    public: true
     plan:
       - get: github-repo
         trigger: false
+        passed:
+          - spell-check
       - task: copy-content
         file: github-repo/ci/deploy-website/task.yml          
       - put: website
