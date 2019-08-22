@@ -5,6 +5,7 @@ bundle -v
 grep -A 1 "BUNDLED WITH" Gemfile.lock
 gem update --system
 bundle -v
+gem uninstall bundler
 gem install bundler
 bundle -v
 jekyll build
