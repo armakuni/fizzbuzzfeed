@@ -12,11 +12,11 @@ resources:
       uri: git@github.com:armakuni/fizzbuzzfeed.git
       private_key: {{git-private-key}}
 jobs:
-  - name: job
+  - name: deploy-website
     public: true
     plan:
       - get: github-repo
-        trigger: true
+        trigger: false
       - get: website-repo
       - task: copy-content
         config:
@@ -40,7 +40,7 @@ jobs:
                 cp -a github-repo/docs/* updated-website
                 cd updated-website
                 git add .
-                ! git commit -m "Updating website"
+                git commit -m "Updating website" || true
       - put: website-repo
         params: 
           repository: updated-website
