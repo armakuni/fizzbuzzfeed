@@ -19,7 +19,7 @@ jobs:
         trigger: false
       - get: website-repo
       - task: copy-content
-        file: ci/deploy-website/task.yml          
+        file: github-repo/ci/deploy-website/task.yml          
       - put: website-repo
         params: 
           repository: updated-website

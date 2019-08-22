@@ -12,4 +12,4 @@ outputs:
   - name: updated-website
 
 run:
-  path: ci/deploy-website/task.sh
+  path: github-repo/ci/deploy-website/task.sh
