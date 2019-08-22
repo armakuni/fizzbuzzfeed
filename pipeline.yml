@@ -24,7 +24,7 @@ jobs:
   - name: word-count
     plan:
       - get: github-repo
-        trigger: false
+        trigger: true
         passed: 
          - spell-check
       - task: count-words
