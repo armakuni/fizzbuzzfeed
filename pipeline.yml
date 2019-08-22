@@ -25,7 +25,8 @@ jobs:
     plan:
       - get: github-repo
         trigger: false
-        passed: spell-check
+        passed: 
+         - spell-check
       - task: count-words
         file: github-repo/ci/word-count/task.yml
   - name: deploy-website
