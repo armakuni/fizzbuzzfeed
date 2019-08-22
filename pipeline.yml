@@ -19,28 +19,7 @@ jobs:
         trigger: false
       - get: website-repo
       - task: copy-content
-        config:
-          platform: linux
-          image_resource:
-            type: registry-image
-            source: { repository: bitnami/git, tag: 2.23.0 }
-          inputs:
-            - name: github-repo
-            - name: website-repo
-          outputs:
-            - name: updated-website
-          run:
-            path: sh
-            args: 
-              - -exc 
-              - |
-                git config --global user.email "concourse@armakuni.com"
-                git config --global user.name "Concourse"
-                git clone website-repo updated-website
-                cp -a github-repo/docs/* updated-website
-                cd updated-website
-                git add .
-                git commit -m "Updating website" || true
+        file: ci/deploy-website/task.yml          
       - put: website-repo
         params: 
           repository: updated-website
