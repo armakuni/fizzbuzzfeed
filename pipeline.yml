@@ -17,7 +17,7 @@ resources:
 jobs:
   - name: spell-check
     plan:
-      - get: garticles
+      - get: articles
         trigger: true
       - task: check-spelling
         file: articles/ci/spell-check/task.yml
