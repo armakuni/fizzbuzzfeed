@@ -2,14 +2,13 @@ platform: linux
 
 image_resource:
   type: registry-image
-  source: { repository: bitnami/git, tag: 2.23.0 }
+  source: { repository: jekyll/jekyll, tag: 3.7.3 }
 
 inputs:
   - name: github-repo
-  - name: website-repo
 
 outputs:
-  - name: updated-website
+  - name: generated-site
 
 run:
   path: github-repo/ci/deploy-website/task.sh
