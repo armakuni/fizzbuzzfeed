@@ -1,6 +1,6 @@
 ---
 resources:
-  - name: github-repo
+  - name: articles
     type: git
     source:
       uri: git@github.com:armakuni/fizzbuzzfeed.git
@@ -17,26 +17,26 @@ resources:
 jobs:
   - name: spell-check
     plan:
-      - get: github-repo
+      - get: garticles
         trigger: true
       - task: check-spelling
-        file: github-repo/ci/spell-check/task.yml
+        file: articles/ci/spell-check/task.yml
   - name: word-count
     plan:
-      - get: github-repo
+      - get: articles
         trigger: true
         passed: 
          - spell-check
       - task: count-words
-        file: github-repo/ci/word-count/task.yml
+        file: articles/ci/word-count/task.yml
   - name: deploy-website
     plan:
-      - get: github-repo
+      - get: articles
         trigger: false
         passed:
           - word-count
       - task: copy-content
-        file: github-repo/ci/deploy-website/task.yml          
+        file: articles/ci/deploy-website/task.yml          
       - put: website
         params: 
           manifest: generated-site/manifest.yml

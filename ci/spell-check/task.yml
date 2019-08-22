@@ -4,9 +4,9 @@ image_resource:
   source:
     repository: tmaier/markdown-spellcheck
 inputs:
-  - name: github-repo
+  - name: articles
 run:
-  dir: github-repo
+  dir: articles
   path: mdspell
   args:
     - --en-gb

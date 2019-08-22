@@ -7,10 +7,10 @@ image_resource:
     tag: 3.7.3
 
 inputs:
-  - name: github-repo
+  - name: articles
 
 outputs:
   - name: generated-site
 
 run:
-  path: github-repo/ci/deploy-website/task.sh
+  path: articles/ci/deploy-website/task.sh

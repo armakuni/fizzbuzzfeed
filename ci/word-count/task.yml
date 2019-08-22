@@ -4,6 +4,6 @@ image_resource:
   source:
     repository: ubuntu
 inputs:
-  - name: github-repo
+  - name: articles
 run:
-  path: github-repo/ci/word-count/task.sh
+  path: articles/ci/word-count/task.sh
