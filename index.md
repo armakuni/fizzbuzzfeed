@@ -2,9 +2,4 @@
 layout: home
 ---
 
-baddly speled cntent
-
-fdasfdfa
-fdasfads
-fadsfasd
-dsafsd
+Great spelling. The best spelling ever. Make spelling great again.
