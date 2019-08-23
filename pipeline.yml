@@ -42,7 +42,7 @@ jobs:
       - get: articles
         trigger: false
         passed:
-          - word-count
+          - check-voice-tone
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
       - put: website
