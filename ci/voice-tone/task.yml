@@ -7,4 +7,4 @@ image_resource:
 inputs:
   - name: articles
 run:
-  path: articles/ci/check-voice-tone/task.sh
+  path: articles/ci/voice-tone/task.sh
