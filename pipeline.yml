@@ -35,7 +35,7 @@ jobs:
         trigger: true
         passed: 
          - word-count
-      - task: check-voice-tone
+      - task: voice-tone-check
         file: articles/ci/check-voice-tone/task.yml
   - name: deploy-website
     plan:
