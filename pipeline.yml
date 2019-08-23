@@ -54,6 +54,7 @@ jobs:
           - word-count
           - legal-check
           - validate-links
+          - voice-tone
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
       - put: website
