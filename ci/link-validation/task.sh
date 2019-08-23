@@ -4,7 +4,7 @@ set -euo pipefail
 
 cd articles/_posts
 
-npm install 
+npm install -g markdown-link-check
 
 for MARKDOWN_FILE in $(find . -iname '*.md')
 do
