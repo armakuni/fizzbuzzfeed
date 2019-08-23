@@ -39,6 +39,12 @@ jobs:
         trigger: true
       - task: link-validation
         file: articles/ci/link-validation/task.yml
+  - name: voice-tone
+    plan:
+      - get: articles
+        trigger: true
+      - task: voice-tone-check
+        file: articles/ci/voice-tone/task.yml
   - name: deploy-website
     plan:
       - get: articles
