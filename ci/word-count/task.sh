@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set +ex
 EXITCODE=0
-cd _posts
+cd articles/_posts
 for i in $(find . -iname '*.md'); do
     WORDCOUNT=`cat "$i" | tail +6 | wc -m`
     echo "$i has $WORDCOUNT words"
