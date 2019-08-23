@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+cd articles/_posts
 
 npm install 
 
-for MARKDOWN_FILE in $(find . -iname '*.md' -not -path "./node_modules/*" -print)
+for MARKDOWN_FILE in $(find . -iname '*.md')
 do
   node_modules/markdown-link-check/markdown-link-check \
-    --config="$SCRIPT_DIR/checklink-config.json" \
+    --config="../ci/link-validation/checklink-config.json" \
     "$MARKDOWN_FILE"
 done
