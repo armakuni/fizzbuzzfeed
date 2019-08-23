@@ -8,10 +8,8 @@ cd articles/_posts
 for i in $(find . -iname '*.md'); do
     OUTPUT=$(alex $i 2>&1)
     echo $OUTPUT
-    if [[ $OUTPUT == *"no issues found"* ]]
+    if [[ $OUTPUT != *"no issues found"* ]]
     then        
-        EXITCODE=0
-    else
         EXITCODE=1
     fi
 done
