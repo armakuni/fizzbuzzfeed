@@ -25,24 +25,29 @@ jobs:
     plan:
       - get: articles
         trigger: true
-        passed: 
-         - spell-check
       - task: count-words
         file: articles/ci/word-count/task.yml
   - name: voice-tone
     plan:
       - get: articles
         trigger: true
-        passed: 
-         - word-count
       - task: voice-tone-check
         file: articles/ci/voice-tone/task.yml
+  - name: validate-links
+    plan:
+      - get: articles
+        trigger: true
+      - task: link-validation
+        file: articles/ci/link-validation/task.yml
   - name: deploy-website
     plan:
       - get: articles
         trigger: false
         passed:
+          - spell-check
+          - word-count
           - voice-tone
+          - validate-links
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
       - put: website

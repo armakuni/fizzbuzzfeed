@@ -1,0 +1,24 @@
+{
+  "ignorePatterns": [
+      {
+          "pattern": "https?://www\\.pivotaltracker\\.com"
+      },
+      {
+          "pattern": "http://127\\.0\\.0\\.1:8000/"
+      },
+      {
+          "pattern": "http://www\\.thefa\\.com"
+      },
+      {
+          "pattern": "https?://bitbucket\\.org/armakuni/ak-learning/.*"
+      },
+      {
+          "pattern": "https?://www\\.amazon\\.co(\\.uk|m)"
+      },
+      {
+          "pattern": "https?://www\\.udemy\\.co(\\.uk|m)"
+      }
+  ],
+  "replacementPatterns": [],
+  "httpHeaders": []
+}

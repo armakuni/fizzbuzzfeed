@@ -1,0 +1,10 @@
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: node
+    tag: 12.9.0
+inputs:
+  - name: articles
+run:
+  path: articles/ci/link-validation/task.sh
