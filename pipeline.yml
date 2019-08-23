@@ -27,12 +27,12 @@ jobs:
         trigger: true
       - task: count-words
         file: articles/ci/word-count/task.yml
-  - name: voice-tone
+  - name: legal-check
     plan:
       - get: articles
         trigger: true
-      - task: voice-tone-check
-        file: articles/ci/voice-tone/task.yml
+      - task: check-legal
+        file: articles/ci/legal-check/task.yml
   - name: validate-links
     plan:
       - get: articles
@@ -46,7 +46,7 @@ jobs:
         passed:
           - spell-check
           - word-count
-          - voice-tone
+          - legal-check
           - validate-links
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
