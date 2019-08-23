@@ -8,6 +8,10 @@ for i in $(find . -iname '*.md'); do
     then
         echo "$i contains too many words!"
         EXITCODE=1
+    elif [ $WORDCOUNT -lt 100 ]
+    then
+        echo "$i contains too few words!"
+        EXITCODE=1
     fi
 done
 exit $EXITCODE

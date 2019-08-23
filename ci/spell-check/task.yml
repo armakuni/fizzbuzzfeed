@@ -12,4 +12,4 @@ run:
     - --en-gb
     - --ignore-numbers
     - --report
-    - '**/*.md'
+    - '_posts/**/*.md'
