@@ -29,20 +29,20 @@ jobs:
          - spell-check
       - task: count-words
         file: articles/ci/word-count/task.yml
-  - name: check-voice-tone
+  - name: voice-tone
     plan:
       - get: articles
         trigger: true
         passed: 
          - word-count
       - task: voice-tone-check
-        file: articles/ci/check-voice-tone/task.yml
+        file: articles/ci/voice-tone/task.yml
   - name: deploy-website
     plan:
       - get: articles
         trigger: false
         passed:
-          - check-voice-tone
+          - voice-tone
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
       - put: website
