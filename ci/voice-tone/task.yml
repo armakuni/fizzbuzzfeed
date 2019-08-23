@@ -3,7 +3,7 @@ image_resource:
   type: registry-image
   source:
     repository: node
-    tag: 12.9.0-alpine
+    tag: 12.9.0
 inputs:
   - name: articles
 run:
