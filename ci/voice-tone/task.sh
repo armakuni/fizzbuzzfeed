@@ -6,4 +6,4 @@ set +ex
 
 cd articles/_posts
 
-write-good *.md --parse --no-passive
+write-good *.md --no-passive
