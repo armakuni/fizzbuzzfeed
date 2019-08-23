@@ -7,12 +7,11 @@ EXITCODE=0
 cd articles/_posts
 for i in $(find . -iname '*.md'); do
     OUTPUT='alex $i'
+    echo $OUTPUT
     if [[ $OUTPUT == *"no issues found"* ]]
-    then
+    then        
         EXITCODE=0
     else
-    then
-        echo $OUTPUT
         EXITCODE=1
     fi
 done
