@@ -1,0 +1,10 @@
+platform: linux
+image_resource:
+  type: registry-image
+  source:
+    repository: node
+    tag: 12.9.0-alpine
+inputs:
+  - name: articles
+run:
+  path: articles/ci/check-voice-tone/task.sh

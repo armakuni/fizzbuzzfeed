@@ -29,6 +29,14 @@ jobs:
          - spell-check
       - task: count-words
         file: articles/ci/word-count/task.yml
+  - name: check-voice-tone
+    plan:
+      - get: articles
+        trigger: true
+        passed: 
+         - word-count
+      - task: check-voice-tone
+        file: articles/ci/check-voice-tone/task.yml
   - name: deploy-website
     plan:
       - get: articles
