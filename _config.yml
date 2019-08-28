@@ -27,15 +27,11 @@
 
 
 texture:
-  style: blue
-  title: Armakuni
+  style: purple
+  font: 
+  title: FizzBuzzFeed
   tagline: Agile Scotland August 2019
   date_format: "%b %-d, %Y"
-
-  social_links:
-      twitter: ArmakuniHQ
-      github:  armakuni
-      linkedIn: company/armakuni/ # format: locale/username
 
 # Build settings
 markdown: kramdown
