@@ -15,18 +15,10 @@ resources:
       space: {{cf-space}}
       skip_cert_check: false
 jobs:
-  - name: spell-check
-    plan: 
-      - get: articles
-        trigger: true
-      - task: spell-check
-        file: articles/ci/spell-check/task.yml
   - name: deploy-website
     plan:
       - get: articles
         trigger: false
-        passed: 
-          - spell-check
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
       - put: website
