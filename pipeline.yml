@@ -15,6 +15,30 @@ resources:
       space: {{cf-space}}
       skip_cert_check: false
 jobs:
+  - name: spell-check
+    plan:
+      - get: articles
+        trigger: true
+      - task: check-spelling
+        file: articles/ci/spell-check/task.yml
+  - name: word-count
+    plan:
+      - get: articles
+        trigger: true
+      - task: count-words
+        file: articles/ci/word-count/task.yml
+  - name: validate-links
+    plan:
+      - get: articles
+        trigger: true
+      - task: link-validation
+        file: articles/ci/link-validation/task.yml
+  - name: voice-tone
+    plan:
+      - get: articles
+        trigger: true
+      - task: voice-tone-check
+        file: articles/ci/voice-tone/task.yml
   - name: legal-check
     plan:
       - get: articles
@@ -27,6 +51,10 @@ jobs:
         trigger: false
         passed:
           - legal-check
+          - spell-check
+          - validate-links
+          - word-count
+          - voice-tone
       - task: copy-content
         file: articles/ci/deploy-website/task.yml          
       - put: website
